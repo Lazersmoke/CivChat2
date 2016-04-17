@@ -51,7 +51,9 @@ public class CivChat2Listener implements Listener {
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void onPlayerJoin(PlayerJoinEvent playerJoinEvent){
 		CivChat2.debugmessage("playerJoinEvent occured");
-		playerJoinEvent.setJoinMessage(null);
+		if (!CivChat2.getInstance().getPluginConfig().getLoginAnnounce()) {
+			playerJoinEvent.setJoinMessage(null);
+		}
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
